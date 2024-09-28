@@ -5,6 +5,7 @@ namespace GogApp.Models;
 
 public class AppUser : IdentityUser
 {
+    public string? About { get; set; }
     // Projects the user manages (they are the creator/manager)
     public ICollection<Project>? MyProjects { get; set; }
 
