@@ -1,11 +1,12 @@
 using System;
 using GogApp.Data;
+using GogApp.Interfaces;
 using GogApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GogApp.Repository;
 
-public class ProjectVolunteerRepository
+public class ProjectVolunteerRepository : IProjectVolunteerRepository
 {
     private readonly ApplicationDbContext context;
 
