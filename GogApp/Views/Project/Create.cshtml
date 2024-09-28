@@ -1,0 +1,31 @@
+﻿@using GogApp.ViewModels
+@model CreateProjectViewModel
+
+<h1>Create Project</h1>
+<form asp-action="Create" method="post">
+    <input type="hidden" id="ManagerId" name="ManagerId" asp-for="ManagerId">
+
+    <!-- Title -->
+    <div class="mb-3 form-group">
+        <label asp-for="Title" class="form-label">Title:</label>
+        <input asp-for="Title" type="text" class="form-control">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3 form-group">
+        <label asp-for="Description" class="form-label">Description:</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <!-- Details -->
+    <div class="mb-3 form-group">
+        <label asp-for="Details" class="form-label">Details:</label>
+        <textarea asp-for="Details" class="form-control"></textarea>
+        <span asp-validation-for="Details" class="text-danger"></span>
+        <p class="text-sm">Please list your volunteer and donation needs as well.</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

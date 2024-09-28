@@ -1,0 +1,233 @@
+﻿@inject UserManager<AppUser> UserManager
+@using GogApp.ViewModels
+@model ProjectDetailViewModel
+@using Microsoft.AspNetCore.Identity
+
+<!-- Page Content -->
+<div class="container">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="my-5">
+        <!-- Project Heading -->
+        <h1 class="my-3">
+            @Model.Project?.Title
+        </h1>
+        <h5>Project Manager: @Model.Project?.Manager?.UserName</h5>
+
+        <!-- Manager actions -->
+        @if (Model.Project?.ManagerId == UserManager.GetUserId(User))
+        {
+            <!-- Button to Add Task -->
+            <a type="button" class="btn btn-primary" asp-area="" asp-controller="ProjectTask" asp-action="AddTask"
+                asp-route-projectId="@Model.Project?.Id">Add New Task</a>
+        }
+        else
+        {
+
+            @if (UserManager.GetUserId(User) == null)
+            {
+                <!-- If user is not logged in -->
+                <p>Log in to participate in the project.</p>
+            }
+            else
+            {
+                @if (Model.Volunteers.Any(v => v.Volunteer.Id ==
+               UserManager.GetUserId(User)))
+                {
+
+                }
+                else
+                {
+                    <!-- Button to Sign Up for Project -->
+                    <form asp-action="SignUp" asp-controller="ProjectVolunteer" method="post" class="mt-3">
+                        <input type="hidden" name="projectId" value="@Model.Project?.Id" />
+                        <button type="submit" class="btn btn-primary">Sign Up for This Project</button>
+                    </form>
+                }
+
+                <a type="button" class="btn btn-success my-2" asp-area="" asp-controller="Donation" asp-action="Create"
+                    asp-route-projectId="@Model.Project?.Id">Donate</a>
+            }
+        }
+
+        <div class="my-5">
+            <p>@Model.Project?.Description</p>
+            <p>@Model.Project?.Details</p>
+        </div>
+    </div>
+    <hr>
+    <!-- Check if the user is either the manager OR a project volunteer -->
+    @if (Model.Project?.ManagerId == UserManager.GetUserId(User) || Model.Volunteers.Any(v => v.Volunteer.Id ==
+    UserManager.GetUserId(User)))
+    {
+        <!-- Project Tasks Section -->
+        <h3 class="my-4">Tasks</h3>
+
+        @if (Model.Project.ProjectTasks != null && Model.Project.ProjectTasks.Any())
+        {
+            <div class="row">
+                @foreach (var task in Model.Project.ProjectTasks)
+                {
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@task.Title</h5>
+                                <p class="card-text">
+                                    Assigned at: @task.AssignedAt?.ToString("d")<br />
+                                    Completed at: @task.CompletedAt?.ToString("d")<br />
+                                </p>
+                                <div>
+                                    <a asp-controller="ProjectTask" asp-action="TaskDetails" asp-route-id="@task.Id" type="button"
+                                        class="btn btn-sm btn-outline-secondary">
+                                        View
+                                    </a>
+                                    @if (User.Identity.IsAuthenticated && Model.Project.ManagerId == UserManager.GetUserId(User))
+                                    {
+                                        <a asp-controller="ProjectTask" asp-action="" asp-route-id="@task.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            Edit
+                                        </a>
+                                        <a asp-controller="ProjectTask" asp-action="Delete" asp-route-id="@task.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            Delete
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info" role="alert">
+                No tasks available for this project.
+            </div>
+        }
+
+        <!-- Project Volunteers Section -->
+        <h3 class="my-4">Volunteers</h3>
+
+        @if (Model.Volunteers != null && Model.Volunteers.Any())
+        {
+            <div class="row">
+                @foreach (var volunteer in Model.Volunteers)
+                {
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@volunteer.Volunteer.UserName</h5>
+                                <p class="card-text">
+                                    Signed up at: @volunteer.SignedUpAt.ToString("d")<br />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info" role="alert">
+                No volunteers have signed up for this project yet.
+            </div>
+        }
+        <hr>
+        <h2 class="my-4">Project Communication</h2>
+        @if (Model.Project.Reports != null && Model.Project.Reports.Any())
+        {
+            <div class="row">
+                @foreach (var report in Model.Project.Reports)
+                {
+                    <div class="mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-title">@report.Content</p>
+                                <p class="card-text">
+                                    Created at: @report.CreatedAt.ToString("d")
+                                </p>
+                                <div>
+
+                                    @if (User.Identity.IsAuthenticated && Model.Project.ManagerId == UserManager.GetUserId(User))
+                                    {
+                                        <a asp-controller="Report" asp-action="Edit" asp-route-id="@report.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            Edit
+                                        </a>
+                                        <a asp-controller="Report" asp-action="Delete" asp-route-id="@report.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            Delete
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info" role="alert">
+                No Reports available for this project.
+            </div>
+        }
+
+        <!-- Project Communication (Manager only) -->
+        @if (Model.Project.ManagerId == UserManager.GetUserId(User))
+        {
+            <h5>Add Project Communication/Report</h5>
+            <form asp-controller="Report" asp-action="Create" method="post">
+                <input type="hidden" name="projectId" value="@Model.Project.Id" />
+                <div class="mb-3 form-group">
+                    <label for="reportContent" class="form-label">Report/Communication:</label>
+                    <textarea id="reportContent" name="Content" class="form-control" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit Report</button>
+            </form>
+        }
+        <hr>
+        <h3>Donations</h3>
+        @if (Model.Project.Donations != null && Model.Project.Donations.Any())
+        {
+            <div class="row">
+                @foreach (var donation in Model.Project.Donations)
+                {
+                    <div class="mb-4">
+                        <div class="card">
+                            <div class="card-body ">
+                                <div class="flex-col">
+                                    <p class="card-title"><strong>@donation.Item</strong></p>
+                                    <p>Qty: @donation.Quantity</p>
+                                    <p>Donated by: @donation.User.UserName</p>
+                                </div>
+                                <div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            Sign up to view the tasks or volunteers of this project.
+        </div>
+    }
+
+</div>
+<!-- /.container -->

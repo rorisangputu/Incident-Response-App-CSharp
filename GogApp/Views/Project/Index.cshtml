@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Project>
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<AppUser> UserManager
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <h1 class="mb-3">Projects</h1>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a type="button" class="btn btn-primary mb-5" asp-area="" asp-controller="Project" asp-action="Create">Create
+                Project
+            </a>
+        }
+
+
+        @if (Model.Any())
+        {
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                @foreach (var item in Model)
+                {
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h1>@item.Title</h1>
+                                <p>@item.Description</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a asp-controller="Project" asp-action="Detail" asp-route-id="@item.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            View
+                                        </a>
+
+                                        @if (User.Identity.IsAuthenticated && item.ManagerId == UserManager.GetUserId(User))
+                                        {
+                                            <a asp-controller="Project" asp-action="" asp-route-id="@item.Id" type="button"
+                                                class="btn btn-sm btn-outline-secondary">
+                                                Edit
+                                            </a>
+                                            <a asp-controller="Project" asp-action="Delete" asp-route-id="@item.Id" type="button"
+                                                class="btn btn-sm btn-outline-secondary">
+                                                Delete
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info" role="alert">
+                No projects available at the moment.
+            </div>
+        }
+    </div>
+</div>

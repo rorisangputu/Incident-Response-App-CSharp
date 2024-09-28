@@ -1,0 +1,114 @@
+﻿@model GogApp.ViewModels.UserDashboardViewModel
+
+<div class="container">
+    <h1 class="my-5">@Model.User?.UserName - User Dashboard</h1>
+    <a type="button" class="btn btn-primary mb-5" asp-area="" asp-controller="Project" asp-action="Create">Create
+        Project
+    </a>
+    <a type="button" class="btn btn-primary mb-5" asp-area="" asp-controller="UserDashboard"
+        asp-action="EditUserProfile">Edit Profile
+
+    </a>
+
+    <!-- Managed Projects -->
+    <h2>My Projects</h2>
+    @if (Model.MyProjects != null && Model.MyProjects.Any())
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <ul>
+                @foreach (var project in Model.MyProjects)
+                {
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h1>@project.Title</h1>
+                                <p>@project.Description</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            View
+                                        </a>
+
+
+                                        <a asp-controller="Project" asp-action="" asp-route-id="@project.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            Edit
+                                        </a>
+                                        <a asp-controller="Project" asp-action="" asp-route-id="@project.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            Delete
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </ul>
+        </div>
+    }
+    else
+    {
+        <p>You haven't created any projects yet.</p>
+    }
+
+    <!-- Volunteered Projects -->
+    <h2>Projects I'm Volunteering For</h2>
+    @if (Model.VolunteeredProjects != null && Model.VolunteeredProjects.Any())
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <ul>
+                @foreach (var project in Model.VolunteeredProjects)
+                {
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h1>@project.Title</h1>
+                                <p>@project.Description</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id" type="button"
+                                            class="btn btn-sm btn-outline-secondary">
+                                            View
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </ul>
+        </div>
+    }
+    else
+    {
+        <p>You're not volunteering for any projects yet.</p>
+    }
+
+    <!-- Assigned Tasks -->
+    <h2>Assigned Tasks</h2>
+
+    @if (Model.AssignedTasks != null && Model.AssignedTasks.Any())
+    {
+        <ul>
+            @foreach (var taskVolunteer in Model.AssignedTasks)
+            {
+                <li>
+                    <!-- Display the project title -->
+                    <p><strong>Project: @taskVolunteer.ProjectTask.Project?.Title</strong></p>
+
+                    <!-- Display the task title -->
+                    <p>Task: @taskVolunteer.ProjectTask.Title</p>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No tasks assigned yet.</p>
+    }
+
+</div>

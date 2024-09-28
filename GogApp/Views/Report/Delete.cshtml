@@ -1,0 +1,22 @@
+﻿@model GogApp.Models.Report
+
+@{
+    ViewData["Title"] = "Delete Report";
+}
+
+<h2>Delete Report</h2>
+
+<h3>Are you sure you want to delete this report?</h3>
+<div>
+    <h4>Report Content</h4>
+    <p>@Model.Content</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ProjectId" />
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Detail" asp-controller="Project" asp-route-id="@Model.ProjectId"
+            class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+﻿@using GogApp.ViewModels
+@model AssignTaskVolunteerViewModel
+
+<div class="container">
+    <h2>Assign Volunteers to Task: @Model.ProjectTask?.Title</h2>
+
+    <form asp-action="Assign" method="post">
+        <input type="hidden" asp-for="ProjectTaskId" />
+
+        <div class="form-group">
+            <label asp-for="SelectedVolunteerIds">Volunteers</label>
+            <select asp-for="SelectedVolunteerIds" class="form-control" multiple>
+                @foreach (var volunteer in Model.AvailableVolunteers)
+                {
+                    <option value="@volunteer.Id">@volunteer.Volunteer.UserName</option>
+                }
+            </select>
+            <h5>Hold shift/cmd to select multiple volunteers</h5>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Assign Volunteers</button>
+    </form>
+</div>

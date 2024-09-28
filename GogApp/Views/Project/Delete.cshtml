@@ -1,0 +1,12 @@
+﻿@model GogApp.Models.Project
+
+<div class="container">
+    <h2>Delete Project</h2>
+    <p>Are you sure you want to delete the project <strong>@Model.Title</strong>?</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

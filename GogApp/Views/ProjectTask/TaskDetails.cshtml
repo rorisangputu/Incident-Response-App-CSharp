@@ -1,0 +1,46 @@
+﻿@inject UserManager<AppUser> UserManager
+@using Microsoft.AspNetCore.Identity
+@using GogApp.ViewModels
+@model TaskDetailViewModel
+
+<!-- Task Details -->
+<div class="container">
+
+    <div class="my-5">
+        <!-- Task Heading -->
+        <h1 class="my-3">
+            Task: @Model.Task?.Title
+        </h1>
+
+        <!-- List of assigned volunteers -->
+        <h5>Assigned Volunteers</h5>
+        @if (Model.AssignedVolunteers != null && Model.AssignedVolunteers.Any())
+        {
+            <ul>
+                @foreach (var taskVolunteer in Model.AssignedVolunteers)
+                {
+                    <li>@taskVolunteer.Volunteer?.UserName</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No volunteers assigned to this task yet.</p>
+        }
+
+        @if (Model.Task.Project.ManagerId == UserManager.GetUserId(User))
+        {
+            <div>
+                <a asp-controller="TaskVolunteer" asp-action="Assign" asp-route-id="@Model.Task?.Id" type="button"
+                    class="btn btn-outline-secondary">
+                    Assign Volunteer
+                </a>
+                <a asp-action="Detail" asp-controller="Project" asp-route-id="@Model.Task.ProjectId"
+                    class="btn btn-secondary">Cancel</a>
+
+            </div>
+        }
+
+    </div>
+
+</div>
