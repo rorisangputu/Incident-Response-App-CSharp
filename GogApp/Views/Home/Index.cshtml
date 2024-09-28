@@ -1,8 +1,142 @@
-﻿@{
+﻿@model GogApp.ViewModels.HomePageViewModel
+
+@{
     ViewData["Title"] = "Home Page";
+
+    // JSON data for images
+    var imageData = new[]
+    {
+new { id = 1, title = "Volunteer", url =
+"https://concernusa.org/uploads/concern-rs72556-turkiye-earthquake-response-banner.jpg" },
+new { id = 2, title = "Aid in Ukraine", url =
+"https://media.istockphoto.com/id/1388718552/photo/volunteer-in-orange-west-gives-a-box-of-food-donation-to-fleeing-refugees-from-ukraine.jpg?s=612x612&w=0&k=20&c=Fzb8q0rPCyMWu1_-MiykAbQA0TjV4gPtnGLQGiBzFZE="
+},
+new { id = 3, title = "Volunteers picks up aid in earthquake affected Haiti", url =
+"https://upload.wikimedia.org/wikipedia/commons/6/6b/US_Navy_100125-N-6266K-238_A_Red_Cross_worker_picks_up_a_humanitarian_box_to_give_to_an_earthquake_survivor_in_Port-au-Prince.jpg"
+},
+new { id = 4, title = "Volunteers delivering packages", url =
+"https://res.cloudinary.com/devex/image/fetch/c_scale,f_auto,q_auto,w_720/https://lh6.googleusercontent.com/vY4jzSkNPpL0i_LgIYnPxut54YIuqVYU8VoTL4FJm8j-_4A8IbwQrlFbPZofH8Ndtl1lurHoGB2g0kJHPW-AYhQQOFzmdzEkb9UD3jBwkiAhyKHkWD7m69fdFsKK05pfNyE20UYW"
+},
+new { id = 5, title = "Red Cross Aid", url = "https://redcross.eu/uploads/themes/humanitarian-aid.jpg" },
+new { id = 6, title = "Aid in Sahel Region", url = "https://arbiterz.com/wp-content/uploads/2023/03/humanitarian.jpg" },
+new { id = 7, title = "Pakistan Floods", url =
+"https://d1ldvf68ux039x.cloudfront.net/thumbs/photos/1009/315950/1000w_q95.jpg"
+},
+new { id = 8, title = "Shelters in Gaza", url =
+"https://gdb.voanews.com/01000000-c0a8-0242-6be6-08dbd15361f1_w1200_r1.jpg" },
+new { id = 9, title = "Volunteers distrubuting aid", url =
+"https://www.unhcr.org/sites/default/files/legacy-images/53f3124e6.jpg" },
+new { id = 10, title = "Distribution of Aid in affected areas", url =
+"https://media.licdn.com/dms/image/D4E12AQHYM2iRvMNHHA/article-cover_image-shrink_720_1280/0/1697356612203?e=2147483647&v=beta&t=wq6fr4aEOR2t0KyhfLeRJLdG_3ATBGI3UMHAz9V18dQ"
+}
+};
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<main>
+    <!-- Banner Section with CTA Button -->
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Welcome to Task Manager</h1>
+                <p class="lead text-muted">Manage your projects efficiently with Task Manager. Check out our latest
+                    projects and get involved!</p>
+                <p>
+                    <a href="/projects" class="btn btn-primary my-2">Explore Projects</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Projects Section -->
+    <div class="album py-5 bg-light my-5">
+
+        <div class="container">
+            <h2 class="mb-4">Latest Projects</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                @foreach (var project in Model.LatestProjects)
+                {
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top"
+                                src="https://lifeaidcm.org/wp-content/uploads/2023/10/Humanitarian-Actions.jpg" width="100%"
+                                alt="Project image">
+                            <div class="card-body">
+                                <h5 class="card-title">@project.Title</h5>
+                                <p class="card-text">@project.Description</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="/projects/details/@project.Id"
+                                            class="btn btn-sm btn-outline-secondary">View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner Section with Call-to-Action Donation Button -->
+    <section class="bg-primary text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4">Support Our Projects</h1>
+            <p class="lead">Your contribution can make a real difference. Help us continue to support important causes
+                and provide valuable services through our projects.</p>
+            <a href="/donations/create" class="btn btn-light btn-lg px-4">Donate Now</a>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+    <div class="container py-5">
+        <h2 class="text-center mb-4">Gallery</h2>
+        <div class="row row-cols-2 row-cols-md-5 g-4">
+            @for (int i = 0; i < imageData.Length; i++)
+            {
+                <div class="col">
+                    <div class="card">
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#imageGalleryModal"
+                            onclick="showSlide(@i)">
+                            <img src="@imageData[i].url" class="card-img-top" width="100%" height="155"
+                                alt=" @imageData[i].title">
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Modal for Image Gallery with Carousel -->
+    <div class="modal fade" id="imageGalleryModal" tabindex="-1" aria-labelledby="imageGalleryModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @for (int i = 0; i < imageData.Length; i++)
+                            {
+                                <div class="carousel-item @(i == 0 ? "active" : "")">
+                                    <img src="@imageData[i].url" class="d-block w-100" alt="@imageData[i].title">
+                                </div>
+                            }
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
