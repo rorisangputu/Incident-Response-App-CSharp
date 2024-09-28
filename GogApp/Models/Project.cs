@@ -1,11 +1,12 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GogApp.Models;
 
 public class Project
 {
     public int Id { get; set; }
-    public required string? Title { get; set; }
+    public string Title { get; set; }
 
     // New properties added
     public string? Description { get; set; }
@@ -18,7 +19,7 @@ public class Project
     public ICollection<Donation>? Donations { get; set; }
 
     [ForeignKey("AppUser")]
-    public required string? ManagerId { get; set; }
+    public string ManagerId { get; set; }
     public AppUser? Manager { get; set; }
 
     public ICollection<ProjectVolunteer>? ProjectVolunteers { get; set; }
