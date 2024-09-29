@@ -64,10 +64,10 @@ new { id = 10, title = "Distribution of Aid in affected areas", url =
                                 <h5 class="card-title">@project.Title</h5>
                                 <p class="card-text">@project.Description</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="/projects/details/@project.Id"
-                                            class="btn btn-sm btn-outline-secondary">View</a>
-                                    </div>
+                                    <a asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id" type="button"
+                                        class="btn btn-sm btn-outline-secondary">
+                                        View
+                                    </a>
                                 </div>
                             </div>
                         </div>
