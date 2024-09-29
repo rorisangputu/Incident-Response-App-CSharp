@@ -9,6 +9,11 @@
             <input asp-for="UserName" class="form-control" />
             <span asp-validation-for="UserName" class="text-danger"></span>
         </div>
+        <div class="mb-3 form-group">
+            <label asp-for="About" class="form-label">About:</label>
+            <textarea asp-for="About" class="form-control"></textarea>
+            <span asp-validation-for="About" class="text-danger"></span>
+        </div>
 
         <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
