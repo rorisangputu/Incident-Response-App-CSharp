@@ -64,6 +64,6 @@ public class TaskVolunteerController : Controller
 
         await taskVolunteerRepo.SaveAsync();
 
-        return RedirectToAction("TaskDetails", "ProjectTask", new { TaskId = assignTaskVolunteerVM.ProjectTaskId }); // Redirect to the task details
+        return RedirectToAction("Index", "Project"); // Redirect to the task details
     }
 }
