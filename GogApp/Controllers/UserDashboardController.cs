@@ -55,7 +55,8 @@ public class UserDashboardController : Controller
 
         var editUserProfileViewModel = new EditUserProfileViewModel
         {
-            UserName = user.UserName
+            UserName = user.UserName,
+            About = user.About
         };
 
         return View(editUserProfileViewModel);
@@ -70,6 +71,7 @@ public class UserDashboardController : Controller
         if (user == null) return NotFound("User Not Found");
 
         user.UserName = editUserProfileVM.UserName;
+        user.About = editUserProfileVM.About;
 
         var result = await _userManager.UpdateAsync(user);
         if (!result.Succeeded)
