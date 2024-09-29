@@ -12,7 +12,7 @@
             <select asp-for="SelectedVolunteerIds" class="form-control" multiple>
                 @foreach (var volunteer in Model.AvailableVolunteers)
                 {
-                    <option value="@volunteer.Id">@volunteer.Volunteer.UserName</option>
+                    <option value="@volunteer.Volunteer.Id">@volunteer.Volunteer.UserName - @volunteer.Volunteer.Id</option>
                 }
             </select>
             <h5>Hold shift/cmd to select multiple volunteers</h5>
