@@ -150,6 +150,7 @@
                     <div class="mb-4">
                         <div class="card">
                             <div class="card-body">
+                                <h2>@report.Title</h2>
                                 <p class="card-title">@report.Content</p>
                                 <p class="card-text">
                                     Created at: @report.CreatedAt.ToString("d")
@@ -189,6 +190,10 @@
             <form asp-controller="Report" asp-action="Create" method="post">
                 <input type="hidden" name="projectId" value="@Model.Project.Id" />
                 <div class="mb-3 form-group">
+                    <label for="reportTitle" class="form-label">Title:</label>
+                    <input for="reportTitle" name="title" type="text" class="form-control">
+                </div>
+                <div class="mb-3 form-group">
                     <label for="reportContent" class="form-label">Report/Communication:</label>
                     <textarea id="reportContent" name="Content" class="form-control" rows="4"></textarea>
                 </div>
@@ -210,12 +215,7 @@
                                     <p>Qty: @donation.Quantity</p>
                                     <p>Donated by: @donation.User.UserName</p>
                                 </div>
-                                <div>
-
-
-                                </div>
                             </div>
-
                         </div>
                     </div>
                 }
