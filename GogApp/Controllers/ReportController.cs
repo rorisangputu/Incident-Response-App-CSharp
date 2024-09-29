@@ -16,7 +16,7 @@ public class ReportController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(int projectId, string content)
+    public async Task<IActionResult> Create(int projectId, string content, string title)
     {
         // Validate input
         if (string.IsNullOrEmpty(content))
@@ -29,6 +29,7 @@ public class ReportController : Controller
         var report = new Report
         {
             ProjectId = projectId,
+            Title = title,
             Content = content,
             CreatedAt = DateTime.Now
         };
@@ -52,6 +53,7 @@ public class ReportController : Controller
         var editReportViewModel = new EditReportViewModel
         {
             Id = report.Id,
+
             Content = report.Content,
             CreatedAt = report.CreatedAt,
             ProjectId = report.ProjectId
