@@ -34,6 +34,7 @@ public class DonationController : Controller
         return View(createDonationViewModel);
     }
 
+    //Creatinga donation
     [HttpPost]
     public async Task<IActionResult> Create(CreateDonationViewModel donationVM)
     {
@@ -59,7 +60,7 @@ public class DonationController : Controller
         }
         catch (System.Exception)
         {
-            //A generic error message to ModelState so it's displayed in the view
+            //An error message to ModelState so it's displayed in the view
             ModelState.AddModelError(string.Empty, "An error occurred while adding the task. Please try again later.");
 
             // Return the view with the taskVM so the user can retry

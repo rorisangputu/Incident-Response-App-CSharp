@@ -9,6 +9,9 @@ namespace GogApp.Controllers;
 
 public class AccountController : Controller
 {
+    //Dependancy Injection
+    //Injecting dbContext, SignIn Manager and User Manager to handle requests
+    //for user info and session data
     private readonly UserManager<AppUser> _userManager;
     private readonly SignInManager<AppUser> _signInManager;
     private readonly ApplicationDbContext _context;
@@ -21,6 +24,7 @@ public class AccountController : Controller
         _context = context;
     }
 
+    //Navigates to Register Page
     [HttpGet]
     public ActionResult Register()
     {
@@ -28,6 +32,7 @@ public class AccountController : Controller
         return View(response);
     }
 
+    //Handles data that will be used to create User
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel registerVM)
     {
@@ -64,10 +69,10 @@ public class AccountController : Controller
         }
         else
         {
-            // Log the errors for debugging
+            // Logging errors for debugging
             foreach (var error in newUserRes.Errors)
             {
-                // Log the error or use a debug tool to view it
+                // Logging error or use a debug tool to view it
                 Console.WriteLine($"Error: {error.Description}");
                 TempData["Error"] = "Registration failed: " + error.Description;
             }
@@ -112,9 +117,11 @@ public class AccountController : Controller
         return View(loginVM);
     }
 
+    //Logging User out
     [HttpGet]
     public async Task<IActionResult> Logout()
     {
+        //SignIn Manager handles the deletion of User session
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }

@@ -37,12 +37,7 @@
             }
             else
             {
-                @if (Model.Volunteers.Any(v => v.Volunteer.Id ==
-               UserManager.GetUserId(User)))
-                {
-
-                }
-                else
+                @if (!Model.Volunteers.Any(v => v.Volunteer.Id == UserManager.GetUserId(User)))
                 {
                     <!-- Button to Sign Up for Project -->
                     <form asp-action="SignUp" asp-controller="ProjectVolunteer" method="post" class="mt-3">
@@ -50,6 +45,7 @@
                         <button type="submit" class="btn btn-primary">Sign Up for This Project</button>
                     </form>
                 }
+
 
                 <a type="button" class="btn btn-success my-2" asp-area="" asp-controller="Donation" asp-action="Create"
                     asp-route-projectId="@Model.Project?.Id">Donate</a>
@@ -213,7 +209,7 @@
                                 <div class="flex-col">
                                     <p class="card-title"><strong>@donation.Item</strong></p>
                                     <p>Qty: @donation.Quantity</p>
-                                    <p>Donated by: @donation.User.UserName</p>
+                                    <p>Donated by: @(donation.User != null ? donation.User.UserName : "Anonymous")</p>
                                 </div>
                             </div>
                         </div>
