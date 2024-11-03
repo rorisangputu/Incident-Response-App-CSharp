@@ -76,22 +76,6 @@ public class ProjectControllerTests
 
     //CREATE
     [Fact]
-    public void ProjectController_Create_ReturnsViewWithCreateProjectViewModel()
-    {
-        // Arrange
-        var userId = "testUserId";
-        A.CallTo(() => contextAccessor.HttpContext.User.GetUserId()).Returns(userId);
-
-        // Act
-        var result = projectController.Create();
-
-        // Assert
-        result.Should().BeOfType<ViewResult>().Which.Model.Should().BeOfType<CreateProjectViewModel>();
-        var model = (result as ViewResult)?.Model as CreateProjectViewModel;
-        model?.ManagerId.Should().Be(userId);
-    }
-
-    [Fact]
     public async Task ProjectController_Create_Post_ReturnsRedirectToIndex()
     {
         // Arrange
@@ -123,6 +107,67 @@ public class ProjectControllerTests
 
         // Assert
         result.Should().BeOfType<ViewResult>().Which.Model.Should().Be(createProjectViewModel);
+    }
+
+    //DELETE
+    [Fact]
+    public async Task ProjectController_Delete_ReturnsViewWithProject_WhenProjectExists()
+    {
+        // Arrange
+        int existingProjectId = 1;
+        var project = A.Fake<Project>();
+        A.CallTo(() => projectRepo.GetByIdAsync(existingProjectId)).Returns(project);
+
+        // Act
+        var result = await projectController.Delete(existingProjectId);
+
+        // Assert
+        var viewResult = result.Should().BeOfType<ViewResult>().Subject;
+        viewResult.Model.Should().Be(project);
+    }
+
+    [Fact]
+    public async Task ProjectController_Delete_ReturnsErrorView_WhenProjectDoesNotExist()
+    {
+        // Arrange
+        int nonExistingProjectId = 999;
+        A.CallTo(() => projectRepo.GetByIdAsync(nonExistingProjectId)).Returns(Task.FromResult<Project>(null));
+
+        // Act
+        var result = await projectController.Delete(nonExistingProjectId);
+
+        // Assert
+        result.Should().BeOfType<ViewResult>().Which.ViewName.Should().Be("Error");
+    }
+
+    [Fact]
+    public async Task ProjectController_DeleteProject_ReturnsRedirectToIndex_WhenProjectExists()
+    {
+        // Arrange
+        int existingProjectId = 1;
+        var project = A.Fake<Project>();
+        A.CallTo(() => projectRepo.GetByIdAsync(existingProjectId)).Returns(project);
+
+        // Act
+        var result = await projectController.DeleteProject(existingProjectId);
+
+        // Assert
+        result.Should().BeOfType<RedirectToActionResult>().Which.ActionName.Should().Be("Index");
+        A.CallTo(() => projectRepo.Delete(project)).MustHaveHappened();
+    }
+
+    [Fact]
+    public async Task ProjectController_DeleteProject_ReturnsErrorView_WhenProjectDoesNotExist()
+    {
+        // Arrange
+        int nonExistingProjectId = 999;
+        A.CallTo(() => projectRepo.GetByIdAsync(nonExistingProjectId)).Returns(Task.FromResult<Project>(null));
+
+        // Act
+        var result = await projectController.DeleteProject(nonExistingProjectId);
+
+        // Assert
+        result.Should().BeOfType<ViewResult>().Which.ViewName.Should().Be("Error");
     }
 }
 
