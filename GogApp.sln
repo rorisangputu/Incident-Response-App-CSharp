@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GogApp", "GogApp\GogApp.csproj", "{48469CFB-B9C2-45D5-B911-FF9F0B0420A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GogApp.Tests", "GogApp.Tests\GogApp.Tests.csproj", "{ADC31670-B1B3-4B38-8FE5-AF8DFEB076D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{48469CFB-B9C2-45D5-B911-FF9F0B0420A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48469CFB-B9C2-45D5-B911-FF9F0B0420A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48469CFB-B9C2-45D5-B911-FF9F0B0420A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC31670-B1B3-4B38-8FE5-AF8DFEB076D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC31670-B1B3-4B38-8FE5-AF8DFEB076D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC31670-B1B3-4B38-8FE5-AF8DFEB076D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC31670-B1B3-4B38-8FE5-AF8DFEB076D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
