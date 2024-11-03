@@ -84,7 +84,7 @@
           }
         }
       },
-      "FluentAssertions/6.12.1": {
+      "FluentAssertions/7.0.0-alpha.4": {
         "type": "package",
         "dependencies": {
           "System.Configuration.ConfigurationManager": "4.4.0"
@@ -2919,15 +2919,15 @@
         "lib/netstandard2.1/FakeItEasy.xml"
       ]
     },
-    "FluentAssertions/6.12.1": {
-      "sha512": "hciWwryyLw3eonfqhFpOMTXyM1/auJChYslEBA+iGJyuBs5O3t/kA8YaeH4iRo/2Fe3ElSYL86C0miivtZ0f3g==",
+    "FluentAssertions/7.0.0-alpha.4": {
+      "sha512": "xf+oTq7E0Iz/Z8mx2zAdGjmxVxCL4os5KmazFar59k1cPQNLKFnqTOXHZvL8Je7KaEyVjXaBi2q6s7Xr1D0E1w==",
       "type": "package",
-      "path": "fluentassertions/6.12.1",
+      "path": "fluentassertions/7.0.0-alpha.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "FluentAssertions.png",
-        "fluentassertions.6.12.1.nupkg.sha512",
+        "fluentassertions.7.0.0-alpha.4.nupkg.sha512",
         "fluentassertions.nuspec",
         "lib/net47/FluentAssertions.dll",
         "lib/net47/FluentAssertions.pdb",
@@ -2935,12 +2935,6 @@
         "lib/net6.0/FluentAssertions.dll",
         "lib/net6.0/FluentAssertions.pdb",
         "lib/net6.0/FluentAssertions.xml",
-        "lib/netcoreapp2.1/FluentAssertions.dll",
-        "lib/netcoreapp2.1/FluentAssertions.pdb",
-        "lib/netcoreapp2.1/FluentAssertions.xml",
-        "lib/netcoreapp3.0/FluentAssertions.dll",
-        "lib/netcoreapp3.0/FluentAssertions.pdb",
-        "lib/netcoreapp3.0/FluentAssertions.xml",
         "lib/netstandard2.0/FluentAssertions.dll",
         "lib/netstandard2.0/FluentAssertions.pdb",
         "lib/netstandard2.0/FluentAssertions.xml",
@@ -8281,7 +8275,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "FakeItEasy >= 8.3.0",
-      "FluentAssertions >= 6.12.1",
+      "FluentAssertions >= 7.0.0-alpha.4",
       "GogApp >= 1.0.0",
       "Microsoft.EntityFrameworkCore.InMemory >= 8.0.8",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
@@ -8342,7 +8336,7 @@
           },
           "FluentAssertions": {
             "target": "Package",
-            "version": "[6.12.1, )"
+            "version": "[7.0.0-alpha.4, )"
           },
           "Microsoft.EntityFrameworkCore.InMemory": {
             "target": "Package",

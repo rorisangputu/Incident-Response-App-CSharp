@@ -6,6 +6,8 @@ namespace GogApp.Models;
 
 public class ProjectVolunteer
 {
+    public int id;
+
     [Key]
     public int Id { get; set; }
     public Project? Project { get; set; }

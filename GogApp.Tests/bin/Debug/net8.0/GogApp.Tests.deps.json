@@ -9,7 +9,7 @@
       "GogApp.Tests/1.0.0": {
         "dependencies": {
           "FakeItEasy": "8.3.0",
-          "FluentAssertions": "6.12.1",
+          "FluentAssertions": "7.0.0-alpha.4",
           "GogApp": "1.0.0",
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.8",
           "Microsoft.NET.Test.Sdk": "17.8.0",
@@ -78,14 +78,14 @@
           }
         }
       },
-      "FluentAssertions/6.12.1": {
+      "FluentAssertions/7.0.0-alpha.4": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "6.0.1"
         },
         "runtime": {
           "lib/net6.0/FluentAssertions.dll": {
-            "assemblyVersion": "6.12.1.0",
-            "fileVersion": "6.12.1.0"
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
           }
         }
       },
@@ -1628,12 +1628,12 @@
       "path": "fakeiteasy/8.3.0",
       "hashPath": "fakeiteasy.8.3.0.nupkg.sha512"
     },
-    "FluentAssertions/6.12.1": {
+    "FluentAssertions/7.0.0-alpha.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hciWwryyLw3eonfqhFpOMTXyM1/auJChYslEBA+iGJyuBs5O3t/kA8YaeH4iRo/2Fe3ElSYL86C0miivtZ0f3g==",
-      "path": "fluentassertions/6.12.1",
-      "hashPath": "fluentassertions.6.12.1.nupkg.sha512"
+      "sha512": "sha512-xf+oTq7E0Iz/Z8mx2zAdGjmxVxCL4os5KmazFar59k1cPQNLKFnqTOXHZvL8Je7KaEyVjXaBi2q6s7Xr1D0E1w==",
+      "path": "fluentassertions/7.0.0-alpha.4",
+      "hashPath": "fluentassertions.7.0.0-alpha.4.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/8.0.8": {
       "type": "package",
