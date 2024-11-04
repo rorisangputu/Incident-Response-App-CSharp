@@ -457,3 +457,5 @@
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.IntegrationTest/obj/Debug/net8.0/GogApp.IntegrationTest.pdb
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.IntegrationTest/obj/Debug/net8.0/GogApp.IntegrationTest.genruntimeconfig.cache
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.IntegrationTest/obj/Debug/net8.0/ref/GogApp.IntegrationTest.dll
+/Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.IntegrationTest/bin/Debug/net8.0/package-lock.json
+/Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.IntegrationTest/bin/Debug/net8.0/package.json

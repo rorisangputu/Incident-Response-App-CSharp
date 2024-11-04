@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GogApp.Tests", "GogApp.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GogApp.IntegrationTest", "GogApp.IntegrationTest\GogApp.IntegrationTest.csproj", "{7B01C6E3-0D03-41E6-9EF3-3B830923D371}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GogApp.UI.Tests", "GogApp.UI.Tests\GogApp.UI.Tests.csproj", "{17794A57-52F3-4272-88D7-8B65025DB258}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7B01C6E3-0D03-41E6-9EF3-3B830923D371}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B01C6E3-0D03-41E6-9EF3-3B830923D371}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B01C6E3-0D03-41E6-9EF3-3B830923D371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17794A57-52F3-4272-88D7-8B65025DB258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17794A57-52F3-4272-88D7-8B65025DB258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17794A57-52F3-4272-88D7-8B65025DB258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17794A57-52F3-4272-88D7-8B65025DB258}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
