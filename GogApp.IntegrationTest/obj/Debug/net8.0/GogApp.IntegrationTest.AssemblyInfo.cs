@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GogApp.IntegrationTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d86ce39e2f05fca4669031d9c747bb48176293c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a6092a33383c9013296dfe4f95f5f302b76ddd4")]
 [assembly: System.Reflection.AssemblyProductAttribute("GogApp.IntegrationTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GogApp.IntegrationTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

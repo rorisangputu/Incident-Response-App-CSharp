@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <label asp-for="SelectedVolunteerIds">Volunteers</label>
-            <select asp-for="SelectedVolunteerIds" class="form-control" multiple>
+            <select id="SelectedVolunteerIds" asp-for="SelectedVolunteerIds" class="form-control" multiple>
                 @foreach (var volunteer in Model.AvailableVolunteers)
                 {
                     <option value="@volunteer.Volunteer.Id">@volunteer.Volunteer.UserName - @volunteer.Volunteer.Id</option>
