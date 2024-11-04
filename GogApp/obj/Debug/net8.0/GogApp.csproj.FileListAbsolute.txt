@@ -141,3 +141,5 @@
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp/obj/Debug/net8.0/GogApp.pdb
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp/obj/Debug/net8.0/GogApp.genruntimeconfig.cache
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp/obj/Debug/net8.0/ref/GogApp.dll
+/Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp/bin/Debug/net8.0/package-lock.json
+/Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp/bin/Debug/net8.0/package.json
