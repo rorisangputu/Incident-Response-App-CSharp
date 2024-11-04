@@ -154,3 +154,5 @@
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.Tests/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.Tests/bin/Debug/net8.0/GogApp.dll
 /Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.Tests/bin/Debug/net8.0/GogApp.pdb
+/Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.Tests/bin/Debug/net8.0/package-lock.json
+/Users/roriputu/Documents/Web-Dev/ASPNET/GogApp/GogApp.Tests/bin/Debug/net8.0/package.json
